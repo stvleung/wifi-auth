@@ -34,9 +34,6 @@ gem 'activerecord-session_store'
 # LDAP support
 gem 'net-ldap'
 
-# SSL Requirement
-gem 'bartt-ssl_requirement', '~>1.4.0', require: 'ssl_requirement'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

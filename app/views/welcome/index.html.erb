@@ -2,11 +2,14 @@
 <%= javascript_include_tag 'auto_logout' if logged_in? %>
 <% end %>
 
-<h1>Congratulations!</h1>
-<p>You're now logged in!</p>
+<div class="container text-center">
+  <h1>You're now registered!</h1>
 
-<h3>Your current IP Address:</h3>
-<p><%= @ip %></p>
+  <%= image_tag "signal.svg", width: 128, height: 128 %>
 
-<h3>Your detected MAC Address:</h3>
-<p><%= @mac %></p>
+  <h3>Your assigned IP Address:</h3>
+  <p><%= ip %></p>
+
+  <h3>Your detected MAC Address:</h3>
+  <p><%= mac %></p>
+</div>

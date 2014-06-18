@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  include ::SslRequirement
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -29,23 +28,23 @@ class ApplicationController < ActionController::Base
 
   # Returns the number of seconds that session is going to expire
   def check_session_expiry
-  	expire_time = session[:expires_at] || Time.now
-  	session_time_left = (expire_time - Time.now).to_i
+    expire_time = session[:expires_at] || Time.now
+    session_time_left = (expire_time - Time.now).to_i
 
-  	render :json => session_time_left
+    render :json => session_time_left
   end
 
   def extend_session
-  	render :nothing => true, :status => 200, :content_type => 'text/html'
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   # Extend session upon activity
   def update_activity_time
-  	session[:expires_at] = Rails.env.development? ? 8.hours.from_now : 20.minutes.from_now
+    session[:expires_at] = Rails.env.development? ? 8.hours.from_now : 20.minutes.from_now
   end
 
   # Conventional way to implement 404
   def not_found
-  	raise ActionController::RoutingError.new('Not Found')
+    raise ActionController::RoutingError.new('Not Found')
   end
 end

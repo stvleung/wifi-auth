@@ -37,18 +37,22 @@
   <nav id="main-nav" class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-target="#navbar-collapse" data-toggle="collapse">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <a class="navbar-brand" href="#">HB WiFi</a>
     </div>
 
-    <div id="navbar-collapse" class="navbar-collapse collapse">
+    <div id="navbar-collapse" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li "class='active'">My Info</li>
+        <li class="<%= params[:controller] == 'welcome' ? 'active' : '' %>"><a href="#">Welcome</a></li>
+        <li><p class="navbar-text"><%= current_user.name %> is currently signed in</p></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Sign Out', :controller => 'account', :action => 'logout' %></li>
       </ul>
-      <p class="pull-right push-up text-muted"><%= current_user.name %> is currently signed in</p>
     </div>
   </nav>
   <% end %>
@@ -58,7 +62,7 @@
   <div id="content">
     <div id="flash">
       <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-info notice', :content => flash[:notice]} unless flash[:notice].nil? %>
-      <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-error error', :content => flash[:error]} unless flash[:error].nil? %>
+      <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-danger error', :content => flash[:error]} unless flash[:error].nil? %>
       <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-warning', :content => flash[:alert]} unless flash[:alert].nil? %>
     </div>
     <h2 class="title"><%= @title %></h2>
