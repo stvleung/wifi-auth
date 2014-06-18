@@ -1,0 +1,255 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require bootstrap/less/bootstrap
+ *= require bootstrap-theme
+ *= require_self
+ */
+
+
+@padding-base-horizontal: 15px;
+
+
+/* HEADING FONT SIZE OVERRIDES */
+@font-size-h1:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h2:            ceil((@font-size-base * 1.7));   // ~24px
+@font-size-h3:            ceil((@font-size-base * 1.25));  // ~18px
+@font-size-h4:            @font-size-base;
+@font-size-h5:            ceil((@font-size-base * 0.85));  // ~12px
+
+
+body {
+	position: relative; // Needed for affix, apparently
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+	margin-top: (@line-height-computed / 2);
+}
+
+
+/* Load fonts from this directory. */
+@icon-font-path:         "../fonts/";
+
+
+input[type=text],
+input[type=number],
+input[type=password],
+select,
+textarea {
+	.form-control;
+}
+
+label {
+	color: #666;
+}
+
+textarea {
+	height: auto;
+}
+
+select {
+	min-height: 0;
+	height: 34px;
+	padding: 7px 5px;
+	margin: 2px 0;
+}
+
+.text-large {
+	font-size: 125%;
+}
+
+.container {
+	
+}
+
+.btn {
+    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+
+    &:hover,
+    &:focus {
+        background-position: 0 -15px;
+
+        // transition is only when going to hover/focus, otherwise the background
+        // behind the gradient (there for IE<=9 fallback) gets mismatched
+        .transition(background-position .1s linear);
+    }
+}
+
+.btn-pseudo-states(@color, @background, @border) {
+  #gradient > .vertical(lighten(@background, 5%); 0%; darken(@background, 5%); 100%);
+  border-color: darken(@border, 10%);
+}
+
+.form-inline {
+	input, select, textarea {
+		width: auto;
+		display: inline;
+	}
+}
+
+.dl-horizontal {
+	dt {
+		margin-bottom: 5px;
+		width: 250px;
+		font-weight: 400;
+		color: #666;
+		white-space: normal;
+	}
+	
+	dd {
+		margin-bottom: 5px;
+		margin-left: 270px;
+		font-weight: 500;
+	}
+}
+
+
+.panel-heading {
+	h3 {
+		margin: 0;
+	}
+}
+
+.notice {
+	.alert();
+	.alert-warning();
+}
+
+.error,
+.errorExplanation {
+	.alert();
+	.alert-danger();
+	
+	h2 {
+		.h4();
+		margin-top: 0;
+	}
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+#main {
+	margin-top: 20px;
+}
+
+#footer {
+	margin: 100px 0 20px;
+}
+
+@navbar-height: 40px;
+
+.navbar-inverse {
+	#gradient > .vertical(#303030; #151515);
+	
+	.nav {
+		.dropdown-menu {
+			background: @navbar-inverse-bg;
+			
+			> li {
+				> a {
+					color: @navbar-inverse-link-color;
+					
+					&:hover {
+						color: @navbar-inverse-link-hover-color;
+						background: @gray-darker;
+					}
+				}
+			}
+		}
+	}
+}
+
+.sorting { background: url('../images/sort_both.png') no-repeat center right; }
+.sorting_asc { background: url('../images/sort_asc.png') no-repeat center right; }
+.sorting_desc { background: url('../images/sort_desc.png') no-repeat center right; }
+
+.sorting_asc_disabled { background: url('../images/sort_asc_disabled.png') no-repeat center right; }
+.sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right; }
+
+.push-up { margin-top: 10px; }
+.push-up-2 { margin-top: 20px; }
+.push-up-3 { margin-top: 30px; }
+.push-up-4 { margin-top: 40px; }
+.push-up-5 { margin-top: 50px; }
+
+.push-down { margin-bottom: 10px; }
+.push-down-2 { margin-bottom: 20px; }
+.push-down-3 { margin-bottom: 30px; }
+.push-down-4 { margin-bottom: 40px; }
+.push-down-5 { margin-bottom: 50px; }
+
+
+.pull-up { margin-top: -10px; }
+.pull-up-2 { margin-top: -20px; }
+.pull-up-3 { margin-top: -30px; }
+.pull-up-4 { margin-top: -40px; }
+.pull-up-5 { margin-top: -50px; }
+
+.push-left { margin-left: 10px; }
+.push-left-2 { margin-left: 20px; }
+.push-left-3 { margin-left: 30px; }
+.push-left-4 { margin-left: 40px; }
+.push-left-5 { margin-left: 50px; }
+
+
+.buttons {	
+	margin-top: 25px;
+	padding: 15px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    text-align: center;
+}
+
+button.glyphicon {
+	padding: 5px;
+	border: none;
+	background: none;
+	font-size: 15px;
+	.opacity(.6);
+	.transition(all .3s ease-out);
+	
+	&:hover {
+		.opacity(1);
+	}
+}
+
+#member-query-buttons {
+	&.affix {
+		bottom: 0;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		border: solid #eee;
+		border-width: 1px 1px 0;
+		border-radius: 5px 5px 0 0;
+	}
+	
+	&.affix-bottom {
+		position: relative;
+	}
+}
+
+.chosen-container {
+	font-size: 14px;	
+}
+
+.chosen-container-single {
+	.chosen-single {
+		height: 30px;
+		line-height: 30px;
+	}
+}
+

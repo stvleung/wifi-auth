@@ -1,0 +1,45 @@
+development:
+    email:
+        server: mail.conradchu.com
+        port: 2525
+        domain:
+        authentication: login
+        username: smtp+conradchu.com
+        password: smtprules
+        delivery_method: :smtp
+    ldap:
+        basedn: dc=gracepoint,dc=org
+        usersdn: cn=users,dc=gracepoint,dc=org
+        groupdn: cn=groups,dc=gracepoint,dc=org
+        host: web3.gracepointonline.org
+        port: 636
+        username: cn=Manager,dc=gracepoint,dc=org
+        password: d1r@dm1n
+    router:
+        hostname: hb-gw1.gracepointonline.org
+        ip: 192.168.0.1
+    auth:
+        host: wifi-auth.gracepointonline.org
+
+production:
+    email:
+        server: localhost
+        port:
+        domain:
+        authentication:
+        username:
+        password:
+        delivery_method: :sendmail
+    ldap:
+        basedn: dc=gracepoint,dc=org
+        usersdn: cn=users,dc=gracepoint,dc=org
+        groupdn: cn=groups,dc=gracepoint,dc=org
+        host: web3.gracepointonline.org
+        port: 389
+        username: cn=Manager,dc=gracepoint,dc=org
+        password: d1r@dm1n
+    router:
+        hostname: hb-gw1.gracepointonline.org
+        ip: 192.168.0.1
+    auth:
+        host: wifi-auth.gracepointonline.org

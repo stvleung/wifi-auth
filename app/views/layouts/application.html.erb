@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiFi Authentication</title>
+
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+
+  <%= yield(:head) %>
+</head>
+
+<body>
+
+<% if logged_in? %>
+<div id="auto-logout-confirmation" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Warning</h4>
+      </div>
+      <div class="modal-body">
+        Your session will be logged out in
+        <span id="auto-logout-confirmation-seconds">60</span>
+        seconds.
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="extend-session" class="btn btn-primary">Extend session</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
+
+<header id="header">
+  <% if logged_in? %>
+  <nav id="main-nav" class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-target="#navbar-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div id="navbar-collapse" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li "class='active'">My Info</li>
+        <li><%= link_to 'Sign Out', :controller => 'account', :action => 'logout' %></li>
+      </ul>
+      <p class="pull-right push-up text-muted"><%= current_user.name %> is currently signed in</p>
+    </div>
+  </nav>
+  <% end %>
+</header>
+
+<div id="main" class="container-fluid clearfix">
+  <div id="content">
+    <div id="flash">
+      <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-info notice', :content => flash[:notice]} unless flash[:notice].nil? %>
+      <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-error error', :content => flash[:error]} unless flash[:error].nil? %>
+      <%= render :partial => 'shared/flash', :locals => {:type => 'alert alert-warning', :content => flash[:alert]} unless flash[:alert].nil? %>
+    </div>
+    <h2 class="title"><%= @title %></h2>
+ 
+<%= yield %>
+
+    <footer id="footer" class="clear text-right">
+      <hr />
+      <a href="mailto:it@gpmail.org">Need help? Contact Support</a>
+    </footer>
+  </div>
+</div><!-- /#main -->
+
+<% unless Rails.env.development? %>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-97361-50']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<% end %>
+
+</body>
+</html>

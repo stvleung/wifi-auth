@@ -1,0 +1,2 @@
+module DhcpdHelper
+end

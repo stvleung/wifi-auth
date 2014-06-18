@@ -1,0 +1,17 @@
+<%= form_tag "login", :role => "form" do %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-xl2 col-xl-offset-5">
+    <div class="form-group">
+      <label for="login">Gracepoint Login</label>
+      <%= text_field_tag 'login', @login, :autofocus => 'autofocus', :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <%= password_field_tag 'password', nil, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag 'Log in', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+<% end %>
